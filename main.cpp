@@ -1,60 +1,29 @@
+#include "BubbleSort.h"
+#include "SelectionSort.h"
+#include "InsertionSort.h"
+#include "MergeSort.h"
 #include <iostream>
-#include <cmath>
-#include <vector>
-
 using namespace std;
 
+int main()
+{
 
-//template <class T>
-vector<int> insertSort(vector<int> array){
-    unsigned int i, j;
-    vector<int> sortedArray;
-    int max;
+    int arr[]={10,33,27,14,35,19,48,44};
+    int length= sizeof(arr)/sizeof(arr[0]);
+    BubbleSort  B;
+    B.BubbleSorter(arr,length);
+    cout<<endl<<endl;
 
-    for(i = 0; i<array.size();i++){
-        max = array[i];
+    SelectionSort S;
+    S.SelectionSorter(arr,length);
+   cout<<endl<<endl;
 
-        for(j = i; j<array.size();j++){
-           max = array[j] > max ? array[j]:max;
+    InsertionSort I;
+    I.InsertionSorter(arr,length);
+    cout<<endl<<endl;
 
-        }
+    MergeSort M;
+    M.MergeSorter(arr,length);
+    cout<<endl<<endl;
 
-        sortedArray[i] = max;
-    }
-
-    return sortedArray;
-}
-
-
-int main() {
-
-   srand(time(NULL));
-   int element;
-   unsigned int i;
-   vector<int> nums;
-
-   for(i = 0; i < 10; i++){
-
-       element = rand()%10 + 1;
-       nums.push_back(element);
-   }
-
-
-
-   cout<<"The array before sorting: ";
-
-   for(i = 0; i<nums.size(); i++){
-       cout << nums[i] << " ";
-   }
-
-
-   vector<int> sortedNums = insertSort(nums);
-
-   cout<<"The array after sorting: ";
-
-   for(i = 0; i<sortedNums.size(); i++){
-       cout <<  sortedNums[i];
-   }
-
-   return 0;
 }
