@@ -1,45 +1,29 @@
+#include "BubbleSort.h"
+#include "SelectionSort.h"
+#include "InsertionSort.h"
+#include "MergeSort.h"
 #include <iostream>
-#include <vector>
-
 using namespace std;
 
-void bubbleSort(vector<int> a);
-
-void printVector(vector<int> a);
-
-int main(int argc, char const *argv[])
+int main()
 {
 
-    vector<int> a{14,33,27,10,35,19,48,44};
-    printVector(a);
+    int arr[]={10,33,27,14,35,19,48,44};
+    int length= sizeof(arr)/sizeof(arr[0]);
+    BubbleSort  B;
+    B.BubbleSorter(arr,length);
+    cout<<endl<<endl;
 
-    bubbleSort(a);
-    printVector(a);
-}
+    SelectionSort S;
+    S.SelectionSorter(arr,length);
+   cout<<endl<<endl;
 
-void bubbleSort(vector<int> a)
-{
-    bool swapp = true;
-    while(swapp)
-    {
-        swapp = false;
-        for (int i = 0; i < a.size()-1; i++)
-        {
-            if (a[i]>a[i+1] )
-            {
-                a[i] += a[i+1];
-                a[i+1] = a[i] - a[i+1];
-                a[i] -=a[i+1];
-                swapp = true;
-            }
-        }
-    }
-}
-void printVector(vector<int> a)
-{
-    for (int i=0;  i <a.size();  i++)
-    {
-        cout<<a[i]<<" ";
-    }
-    cout<<endl;
+    InsertionSort I;
+    I.InsertionSorter(arr,length);
+    cout<<endl<<endl;
+
+    MergeSort M;
+    M.MergeSorter(arr,length);
+    cout<<endl<<endl;
+
 }
