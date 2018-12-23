@@ -1,45 +1,60 @@
 #include <iostream>
+#include <cmath>
 #include <vector>
 
 using namespace std;
 
-void bubbleSort(vector<int> a);
 
-void printVector(vector<int> a);
+//template <class T>
+vector<int> insertSort(vector<int> array){
+    unsigned int i, j;
+    vector<int> sortedArray;
+    int max;
 
-int main(int argc, char const *argv[])
-{
+    for(i = 0; i<array.size();i++){
+        max = array[i];
 
-    vector<int> a{14,33,27,10,35,19,48,44};
-    printVector(a);
+        for(j = i; j<array.size();j++){
+           max = array[j] > max ? array[j]:max;
 
-    bubbleSort(a);
-    printVector(a);
-}
-
-void bubbleSort(vector<int> a)
-{
-    bool swapp = true;
-    while(swapp)
-    {
-        swapp = false;
-        for (int i = 0; i < a.size()-1; i++)
-        {
-            if (a[i]>a[i+1] )
-            {
-                a[i] += a[i+1];
-                a[i+1] = a[i] - a[i+1];
-                a[i] -=a[i+1];
-                swapp = true;
-            }
         }
+
+        sortedArray[i] = max;
     }
+
+    return sortedArray;
 }
-void printVector(vector<int> a)
-{
-    for (int i=0;  i <a.size();  i++)
-    {
-        cout<<a[i]<<" ";
-    }
-    cout<<endl;
+
+
+int main() {
+
+   srand(time(NULL));
+   int element;
+   unsigned int i;
+   vector<int> nums;
+
+   for(i = 0; i < 10; i++){
+
+       element = rand()%10 + 1;
+       nums.push_back(element);
+   }
+
+
+
+   cout<<"The array before sorting: ";
+
+   for(i = 0; i<nums.size(); i++){
+       cout << nums[i] << " ";
+   }
+
+
+   vector<int> sortedNums = insertSort(nums);
+
+   cout<<"The array after sorting: ";
+
+   for(i = 0; i<sortedNums.size(); i++){
+       cout <<  sortedNums[i];
+   }
+
+   return 0;
 }
